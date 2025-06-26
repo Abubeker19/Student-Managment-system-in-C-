@@ -1,9 +1,32 @@
-def display_all_students(data):
-    if not data:
-        print("No student records available.")
-        return
+#include <iostream>
+using namespace std;
+struct Student {
+    std::string name;
+    std::vector<std::string> modules;
+};
 
-    print(f"{'ID':<5} {'Name':<20} {'Grade'}")
-    print("-" * 35)
-    for student in data:
-        print(f"{student['id']:<5} {student['name']:<20} {student['grade']}")
+void displayStudentModules(const std::vector<Student>& students) {
+    for (const auto& student : students) {
+        std::cout << "Student Name: " << student.name << std::endl;
+        std::cout << "Modules:" << std::endl;
+        for (const auto& module : student.modules) {
+            std::cout << "- " << module << std::endl;
+        }
+        std::cout << std::endl; // Add a blank line for better readability
+    }
+}
+
+int main() {
+    // Sample data: List of students with their modules
+    std::vector<Student> students = {
+        {"Alice", {"Mathematics", "Physics", "Chemistry"}},
+        {"Bob", {"Biology", "Mathematics", "English"}},
+        {"Charlie", {"History", "Geography", "Mathematics"}}
+    };
+
+    // Call the function to display the student modules
+    displayStudentModules(students);
+
+    return 0;
+}
+
